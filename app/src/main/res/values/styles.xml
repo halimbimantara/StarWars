@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TextAppearance.Text.Regular" parent="android:TextAppearance">
+        <item name="font">@font/rubik_regular</item>
+    </style>
+
+    <style name="TextAppearance.Text.Bold" parent="android:TextAppearance">
+        <item name="font">@font/rubik_bold</item>
+    </style>
+</resources>

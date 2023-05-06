@@ -1,9 +1,30 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.StarWars" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.StarWars" parent="Theme.MaterialComponents.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
     </style>
 
-    <style name="Theme.StarWars" parent="Base.Theme.StarWars" />
+    <style name="Theme.StarWars" parent="Base.Theme.StarWars" >
+        <item name="colorPrimary">@color/red_main</item>
+        <item name="colorPrimaryVariant">@color/purple_800</item>
+        <item name="colorOnPrimary">@color/purple_800</item>
+        <item name="colorPrimaryDark">@color/red_main</item>
+        <!-- Secondary brand color. -->
+        <item name="font">@font/rubik_regular</item>
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/purple_800</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+        <item name="android:editTextColor">@android:color/white</item>
+        <item name="android:textColorHint">@android:color/white</item>
+
+        <item name="android:windowBackground">@color/white</item>
+    </style>
+    <style name="MyThemeOverlay_Toolbar" parent="ThemeOverlay.MaterialComponents.Toolbar.Primary">
+        <item name="colorOnPrimary">@color/white</item>
+    </style>
+
 </resources>

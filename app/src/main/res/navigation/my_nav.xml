@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/my_nav.xml"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:label=""
+        android:name="com.halim.starwars.ui.screen.SplashFragment" >
+        <action
+            android:id="@+id/action_splashFragment_to_homePeopleFragment"
+            app:destination="@id/homePeopleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homePeopleFragment"
+        android:name="com.halim.starwars.ui.screen.HomePeopleFragment"
+        android:label="">
+        <action
+            android:id="@+id/action_homePeopleFragment_to_detailCharPeopleFragment"
+            app:destination="@id/detailCharPeopleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailCharPeopleFragment"
+        android:name="com.halim.starwars.ui.screen.DetailCharPeopleFragment"
+        android:label="DetailCharPeopleFragment">
+        <action
+            android:id="@+id/action_detailCharPeopleFragment_to_homePeopleFragment"
+            app:destination="@id/homePeopleFragment" />
+    </fragment>
+</navigation>
