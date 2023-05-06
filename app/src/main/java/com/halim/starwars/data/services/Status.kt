@@ -8,5 +8,6 @@ enum class Status {
     SUCCESS,
     ERROR,
     LOADING,
-    TOKEN_EXPIRED
+    TOKEN_EXPIRED,
+    EMPTY
 }

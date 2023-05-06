@@ -1,4 +1,19 @@
 <resources>
     <string name="app_name">StarWars</string>
     <string name="search_hint">Search People</string>
+    <string name="films">Films</string>
+    <string name="full_name">Full Name</string>
+    <string name="skin_color">Skin Color</string>
+    <string name="hair_color">Hair Color</string>
+    <string name="height">Height</string>
+    <string name="mass">Mass</string>
+    <string name="eye_color">Eye Color</string>
+    <string name="homeworld">Home World</string>
+    <string name="gender">Gender</string>
+    <string name="birth_year">Birth Year</string>
+    <string name="planet">Planet</string>
+    <string name="name">Name</string>
+    <string name="species">Species</string>
+    <string name="starship">Starship</string>
+    <string name="vehicle">Vehicle</string>
 </resources>

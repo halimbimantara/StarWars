@@ -11,16 +11,32 @@ import com.halim.starwars.ui.adapter.CharactersPagingSource
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class StarWarsRepository @Inject constructor(private val apiService: ApiService) : SafeApiCall()  {
+class StarWarsRepository @Inject constructor(private val apiService: ApiService) : SafeApiCall() {
     fun getSearchCharacters(searchString: String): Flow<PagingData<PeopleCharResponse>> {
-        return Pager(
-            config = PagingConfig(
-                pageSize = NETWORK_PAGE_SIZE,
-                enablePlaceholders = false
-            ),
-            pagingSourceFactory = {
-                CharactersPagingSource(apiService, searchString)
-            }
-        ).flow
+        return Pager(config = PagingConfig(
+            pageSize = NETWORK_PAGE_SIZE, enablePlaceholders = false
+        ), pagingSourceFactory = {
+            CharactersPagingSource(apiService, searchString)
+        }).flow
+    }
+
+    suspend fun getFilm(url: String) = safeApiCall {
+        apiService.getFilm(url)
+    }
+
+    suspend fun getHomeWorld(url: String) = safeApiCall {
+        apiService.getHomeWorld(url)
+    }
+
+    suspend fun getStarShip(url: String) = safeApiCall {
+        apiService.getStarShip(url)
+    }
+
+    suspend fun getVehicleResponse(url: String) = safeApiCall {
+        apiService.getVehicle(url)
+    }
+
+    suspend fun getSpecies(url: String) = safeApiCall {
+        apiService.getSpecies(url)
     }
 }

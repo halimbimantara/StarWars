@@ -6,14 +6,22 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
+import com.google.gson.Gson
 import com.halim.starwars.base.BaseFragment
 import com.halim.starwars.databinding.FragmentHomeBinding
 import com.halim.starwars.ui.adapter.CharactersPeopleAdapter
+import com.halim.starwars.utils.textChanges
 import com.halim.starwars.viewmodels.CharPeopleViewModels
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.flow.debounce
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -34,6 +42,11 @@ class HomePeopleFragment : BaseFragment() {
     }
 
     private fun actionUI() {
+        binding.searchCharacter.textChanges().debounce(300).onEach {
+            setObserver(binding.searchView.editText!!.text.toString())
+            binding.charactersProgressBar.isVisible = true
+        }.launchIn(lifecycleScope)
+
         binding.searchView.setEndIconOnClickListener {
             setObserver(binding.searchView.editText!!.text.toString())
             binding.charactersProgressBar.isVisible = true
@@ -42,11 +55,18 @@ class HomePeopleFragment : BaseFragment() {
     }
 
     private fun setObserver(searchString: String) {
-        viewLifecycleOwner.lifecycleScope.launch(Main) {
-            viewModel.getCharacters(searchString).collect {
-                charactersAdapter.submitData(lifecycle, it)
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.getCharacters(searchString).collect {
+                    charactersAdapter.submitData(lifecycle, it)
+                }
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+//        viewLifecycleOwner.lifecycleScope.
     }
 
     private fun initAdapter() {
@@ -83,11 +103,9 @@ class HomePeopleFragment : BaseFragment() {
 
     private val charactersAdapter: CharactersPeopleAdapter by lazy {
         CharactersPeopleAdapter(CharactersPeopleAdapter.OnClickListener { character ->
-//            val action =
-//                Hom.actionCharactersFragmentToCharactersDetailsFragment(
-//                    character
-//                )
-//            findNavController().navigate(action)
+            val mtoJson = Gson().toJson(character)
+            val action = HomePeopleFragmentDirections.actionHomePeopleFragmentToDetailCharPeopleFragment(mtoJson)
+            findNavController().navigate(action)
             binding.searchView.editText!!.setText("")
         })
 

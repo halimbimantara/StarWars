@@ -1,5 +1,6 @@
 package com.halim.starwars.ui.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
@@ -13,9 +14,10 @@ class CharactersPeopleAdapter(private val onClickListener: OnClickListener) :
 
     inner class MyViewHolder(private val binding: ItemPeopleLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
+        @SuppressLint("SetTextI18n")
         fun bind(character: PeopleCharResponse?) {
             binding.tvNameCharacter.text = character?.name
-            binding.tvByCharacter.text = character?.birthYear
+            binding.tvByCharacter.text = "Birth year :"+character?.birthYear
         }
     }
 

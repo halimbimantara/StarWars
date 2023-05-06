@@ -5,6 +5,10 @@
     </style>
 
     <style name="TextAppearance.Text.Bold" parent="android:TextAppearance">
-        <item name="font">@font/rubik_bold</item>
+        <item name="fontFamily">@font/rubik_bold</item>
+    </style>
+
+    <style name="TextAppearance.Text.Bold.Heading" parent="android:TextAppearance">
+        <item name="fontFamily">@font/sigma_one_regular</item>
     </style>
 </resources>

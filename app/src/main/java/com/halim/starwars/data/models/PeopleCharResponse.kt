@@ -1,8 +1,11 @@
 package com.halim.starwars.data.models
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class PeopleCharResponse(
     @SerializedName("birth_year")
     var birthYear: String?,
@@ -13,7 +16,7 @@ data class PeopleCharResponse(
     @SerializedName("eye_color")
     var eyeColor: String?,
     @SerializedName("films")
-    var films: List<String?>?,
+    var films: List<String>,
     @SerializedName("gender")
     var gender: String?,
     @SerializedName("hair_color")
@@ -29,11 +32,11 @@ data class PeopleCharResponse(
     @SerializedName("skin_color")
     var skinColor: String?,
     @SerializedName("species")
-    var species: List<Any?>?,
+    var species: List<String>,
     @SerializedName("starships")
-    var starships: List<String?>?,
+    var starships: List<String>,
     @SerializedName("url")
     var url: String?,
     @SerializedName("vehicles")
-    var vehicles: List<String?>?
-)
+    var vehicles: List<String>
+): Parcelable

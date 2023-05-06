@@ -13,7 +13,6 @@ import javax.inject.Inject
 @HiltViewModel
 class CharPeopleViewModels @Inject constructor(private val starWarsRepository: StarWarsRepository) :
     ViewModel() {
-
     fun getCharacters(searchString: String): Flow<PagingData<PeopleCharResponse>> {
         return starWarsRepository.getSearchCharacters(searchString).cachedIn(viewModelScope)
     }

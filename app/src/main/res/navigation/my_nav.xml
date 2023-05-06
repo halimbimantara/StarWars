@@ -18,14 +18,21 @@
         android:label="">
         <action
             android:id="@+id/action_homePeopleFragment_to_detailCharPeopleFragment"
-            app:destination="@id/detailCharPeopleFragment" />
+            app:destination="@id/detailCharPeopleFragment" >
+        </action>
+
     </fragment>
     <fragment
         android:id="@+id/detailCharPeopleFragment"
         android:name="com.halim.starwars.ui.screen.DetailCharPeopleFragment"
-        android:label="DetailCharPeopleFragment">
+        android:label="Detail Actor">
         <action
             android:id="@+id/action_detailCharPeopleFragment_to_homePeopleFragment"
             app:destination="@id/homePeopleFragment" />
+        <argument
+            android:name="extra_data_people"
+            app:argType="string"
+            app:nullable="true">
+        </argument>
     </fragment>
 </navigation>

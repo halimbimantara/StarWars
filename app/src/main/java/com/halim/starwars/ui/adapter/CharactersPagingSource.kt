@@ -14,7 +14,6 @@ class CharactersPagingSource(private val apiService: ApiService, private val sea
             val response = apiService.getCharactersList(position)
             val characters = response.results as List<PeopleCharResponse>
             val filteredData = characters.filter { it.name!!.contains(searchString, true) }
-
             val nextKey = position + 1
             val prevKey = if (position == 1) null else position - 1
 
